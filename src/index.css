@@ -5,6 +5,9 @@
   --white: #ffffff;
   --black: #111;
   --grey: #888;
+  --darkgrey: #1b1b1b;
+  --green: #61c96f;
+  --red: #f94141;
 }
 
 html {
@@ -19,7 +22,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* var(--black) == #111 */
   background-color: var(--black);
-  color: var(--white);
 }
 
 a {
@@ -57,4 +59,20 @@ img {
 ::-webkit-scrollbar-thumb {
   background: var(--blue);
   border-radius: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--white);
+}
+
+@media only screen and (max-width: 800px) {
+  p {
+    font-size: 80%;
+  }
 }
