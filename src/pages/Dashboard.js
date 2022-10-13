@@ -10,14 +10,14 @@ function Dashboard() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(API_URL).then((response) => {
-      if (response.data) {
-        console.log(response.data);
-        setData(response.data);
-      } else {
-        console.log("error");
-      }
-    });
+    // axios.get(API_URL).then((response) => {
+    //   if (response.data) {
+    //     console.log(response.data);
+    //     setData(response.data);
+    //   } else {
+    //     console.log("error");
+    //   }
+    // });
   }, []);
 
   return (
