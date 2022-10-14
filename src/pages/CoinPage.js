@@ -8,7 +8,6 @@ import Loader from "../components/Loader";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
-  console.log(searchParams);
 
   const [data, setData] = useState();
   const [dates, setDates] = useState([]);
@@ -89,7 +88,8 @@ function CoinPage() {
 
     var dates_2 = getDaysArray(priorDate, today);
 
-    setChartData({
+   prices_data?.data?.prices?.[0][1] > prices_data?.data?.prices?.[30][1] 
+    ? setChartData({
       labels: dates_2,
       datasets: [
         {
@@ -98,11 +98,25 @@ function CoinPage() {
           fill: false,
           tension: 0.25,
           backgroundColor: "white",
-          borderColor: "white",
+          borderColor: "#f94141",
           pointRadius: 0,
         },
       ],
-    });
+    }) 
+    : setChartData({
+      labels: dates_2,
+      datasets: [
+        {
+          data: prices_data?.data?.prices?.map((data) => data[1]),
+          borderWidth: 2,
+          fill: false,
+          tension: 0.95,
+          backgroundColor: "white",
+          borderColor: "#61c96f",
+          pointRadius: 0,
+        },
+      ],
+    })
 
     setLoadingChart(false);
     setLoading(false);
