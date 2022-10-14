@@ -15,7 +15,7 @@ function LandingComponent() {
           className="big-heading"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", duration: 1 }}
+          transition={{ type: "spring", duration: 2 }}
         >
           <span className="stroke">Track Crypto</span>
           <br />
