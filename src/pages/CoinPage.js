@@ -95,7 +95,8 @@ function CoinPage() {
 
     var dates_2 = getDaysArray(priorDate, today);
 
-    setChartData({
+    prices_data?.data?.prices?.[`${days}`][1] < prices_data?.data?.prices?.[0][1] 
+    ? setChartData({
       labels: dates_2,
       datasets: [
         {
@@ -104,11 +105,25 @@ function CoinPage() {
           fill: false,
           tension: 0.25,
           backgroundColor: "white",
-          borderColor: "white",
+          borderColor: "#f94141",
           pointRadius: 0,
         },
       ],
-    });
+    })
+    : setChartData({
+        labels: dates_2,
+        datasets: [
+          {
+            data: prices_data?.data?.prices?.map((data) => data[1]),
+            borderWidth: 2,
+            fill: false,
+            tension: 0.25,
+            backgroundColor: "white",
+            borderColor: "#61c96f",
+            pointRadius: 0,
+          },
+        ],
+      });
 
     setLoadingChart(false);
     setLoading(false);
@@ -138,7 +153,6 @@ function CoinPage() {
       console.log("No price data");
       return;
     }
-
     setPrices(prices_data.data.prices);
 
     const priorDate_2 = new Date(
@@ -147,7 +161,10 @@ function CoinPage() {
 
     var dates_2 = getDaysArray(priorDate_2, today);
 
-    setChartData({
+    console.log(prices_data.data.prices)
+
+    prices_data?.data?.prices?.[`${event.target.value}`][1] < prices_data?.data?.prices?.[0][1] 
+    ? setChartData({
       labels: dates_2,
       datasets: [
         {
@@ -156,7 +173,21 @@ function CoinPage() {
           fill: false,
           tension: 0.25,
           backgroundColor: "white",
-          borderColor: "white",
+          borderColor: "#f94141",
+          pointRadius: 0,
+        },
+      ],
+    })
+    : setChartData({
+      labels: dates_2,
+      datasets: [
+        {
+          data: prices_data?.data?.prices?.map((data) => data[1]),
+          borderWidth: 2,
+          fill: false,
+          tension: 0.25,
+          backgroundColor: "white",
+          borderColor: "#61c96f",
           pointRadius: 0,
         },
       ],
