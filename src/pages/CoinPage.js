@@ -27,6 +27,11 @@ function CoinPage() {
         display: false,
       },
     },
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
   };
 
   const [chartData, setChartData] = useState({
