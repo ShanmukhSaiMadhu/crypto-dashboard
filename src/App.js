@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Search from "./pages/Search";
+import ComparePage from "./pages/Compare";
 import CoinPage from "./pages/CoinPage";
 
 function App() {
