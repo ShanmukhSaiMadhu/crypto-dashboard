@@ -8,10 +8,11 @@ import Loader from "../components/Loader";
 import List from "../components/DashboardComponents/List";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import { Button } from "@mui/material";
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
-  console.log(searchParams);
 
   const [data, setData] = useState();
   const [dates, setDates] = useState([]);
@@ -77,8 +78,6 @@ function CoinPage() {
       return;
     }
     setData(response_data.data);
-
-    console.log("ersponse data>>>", response_data.data);
 
     const API_URL2 = `https://api.coingecko.com/api/v3/coins/${response_data.data.id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
 
@@ -161,8 +160,6 @@ function CoinPage() {
 
     var dates_2 = getDaysArray(priorDate_2, today);
 
-    console.log(prices_data.data.prices)
-
     prices_data?.data?.prices?.[`${event.target.value}`][1] < prices_data?.data?.prices?.[0][1] 
     ? setChartData({
       labels: dates_2,
@@ -204,7 +201,7 @@ function CoinPage() {
           <div className="coin-page-div">
             <List coin={coin} />
           </div>
-          <div className="coin-page-div">
+          {/* <div className="graph-btns">
             <p>
               Price Change in the last
               <span>
@@ -232,8 +229,29 @@ function CoinPage() {
               </span>
               days
             </p>
+            <Button variant="contained" size="small" className="graph-btn large" onClick={handleChange} value={7}>1W</Button>
+            <Button variant="contained" size="small" className="graph-btn large" onClick={handleChange} value={30}>1M</Button>
+            <Button variant="contained" size="small" className="graph-btn large" onClick={handleChange} value={60}>3M</Button>
+            <Button variant="contained" size="small" className="graph-btn large" onClick={handleChange} value={365}>1Y</Button>
+
+            <LineChart chartData={chartData} options={options} />
+          </div> */}
+
+          
+          
+
+          <div className="coin-page-div">
+            <div className="graph-btns">
+              <ButtonGroup variant="outlined" size="medium" aria-label="medium button group">
+                <Button onClick={handleChange} value={7}>1W</Button>
+                <Button onClick={handleChange} value={30}>1M</Button>
+                <Button onClick={handleChange} value={60}>3M</Button>
+                <Button onClick={handleChange} value={365}>1Y</Button>
+              </ButtonGroup>
+            </div>
             <LineChart chartData={chartData} options={options} />
           </div>
+          
           <div className="coin-page-div description">
             <h2>{data.name}</h2>
             <p dangerouslySetInnerHTML={{ __html: data.description.en }} />
