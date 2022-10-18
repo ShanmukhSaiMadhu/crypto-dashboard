@@ -90,39 +90,6 @@ td {
   width:100%;
 }
 
-/* .graph-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  border-radius: 1.5rem;
-  padding: 0.75rem 2rem;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  transition: all 0.3s ease;
-  background-color: var(--blue);
-  color: var(--white);
-  border: none;
-  font-size: 1.3rem;
-  font-weight: 600;
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.graph-btn:hover {
-  box-shadow: 4px 4px 15px rgba(58, 128, 233, 0.5);
-  transition: all 0.3s;
-  cursor: pointer;
-  top: 1px;
-  opacity: 1;
-}
-
-.graph-btn:active {
-  box-shadow: 4px 4px 15px rgba(58, 128, 233, 0.5);
-  top: 5px;
-} */
-
 .description a {
   text-decoration: underline;
 }
@@ -164,7 +131,7 @@ td {
     margin-bottom: 0.8rem;
   }
   .select-days {
-    max-width: 110px;
+    max-width: 90px;
   }
 }
 
