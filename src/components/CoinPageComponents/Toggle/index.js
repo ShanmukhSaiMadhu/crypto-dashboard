@@ -31,7 +31,7 @@ export default function ColorToggleButton({
     });
   };
 
-  const sx = { fontSize: "0.7rem", padding: "0.5rem" };
+  const sx = { fontSize: "0.7rem", padding: "0.4rem" };
 
   React.useEffect(() => {
     if (typeof window !== undefined) {

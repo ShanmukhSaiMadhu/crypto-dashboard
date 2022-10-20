@@ -140,6 +140,15 @@ function CoinPage() {
     });
   };
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (window.innerWidth < 620) {
+        setIsMobile(true);
+      }
+    }
+  }, []);
+
   return (
     <>
       {loading && loadingChart ? (
@@ -161,11 +170,11 @@ function CoinPage() {
                 />
               </div>
               <div className="graph-btns">
-                <ButtonGroup variant="outlined" size="medium" aria-label="medium button group">
-                  <Button onClick={handleChange} value={7}>1W</Button>
-                  <Button onClick={handleChange} value={30}>1M</Button>
-                  <Button onClick={handleChange} value={60}>3M</Button>
-                  <Button onClick={handleChange} value={365}>1Y</Button>
+                <ButtonGroup variant="outlined" size={isMobile ? "small" : "medium"} aria-label="button group">
+                  <Button className="graph-btn" onClick={handleChange} value={7}>1W</Button>
+                  <Button className="graph-btn" onClick={handleChange} value={60}>3M</Button>
+                  <Button className="graph-btn" onClick={handleChange} value={30}>1M</Button>
+                  <Button className="graph-btn" onClick={handleChange} value={365}>1Y</Button>
                 </ButtonGroup>
             </div>
             </div>
