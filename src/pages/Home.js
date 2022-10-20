@@ -7,7 +7,7 @@ function Home() {
     <div>
       <Header />
       <LandingComponent />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
