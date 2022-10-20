@@ -172,8 +172,8 @@ function CoinPage() {
               <div className="graph-btns">
                 <ButtonGroup variant="outlined" size={isMobile ? "small" : "medium"} aria-label="button group">
                   <Button className="graph-btn" onClick={handleChange} value={7}>1W</Button>
-                  <Button className="graph-btn" onClick={handleChange} value={60}>3M</Button>
                   <Button className="graph-btn" onClick={handleChange} value={30}>1M</Button>
+                  <Button className="graph-btn" onClick={handleChange} value={60}>3M</Button>
                   <Button className="graph-btn" onClick={handleChange} value={365}>1Y</Button>
                 </ButtonGroup>
             </div>
