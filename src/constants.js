@@ -4,5 +4,5 @@ export const APP_DESCRIPTION =
   "CryptoTracker is the tracker you always needed. Compare different crypto currencies, look at their graphs - prices, total volumes, market cap, etc. Search from the top 100 Crypto currencies in real time.";
 export const APP_KEYWORDS =
   "CryptoTracker., crypto, tracker, crypto dashboard, dashboard, ";
-export const APP_AUTHOR = "Avi Vashishta";
+export const APP_AUTHOR = "Shanmukh Sai Madhu";
 export const APP_URL = "https://shanmukh-crypto-tracker.netlify.app/";
