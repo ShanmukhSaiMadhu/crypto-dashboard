@@ -2,7 +2,6 @@ import axios from "axios";
 import { COIN_GECKO_URL } from "../constants";
 
 export const getCoinData = async (id, slice) => {
-  console.log("hiii");
   const API_URL = COIN_GECKO_URL + `${id}`;
   console.log("api url", API_URL);
   var response_data;

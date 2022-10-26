@@ -22,6 +22,7 @@ function CompareGraph({ crypto1, crypto2, days, type, setType }) {
       },
     },
     responsive: true,
+    aspectRatio: 3,
     interaction: {
       mode: "index",
       intersect: false,

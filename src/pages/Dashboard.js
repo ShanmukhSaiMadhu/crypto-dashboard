@@ -89,7 +89,7 @@ function Dashboard() {
       ) : (
         <>
           <Header />
-          <Search handleChange={handleChange} />
+          <Search handleChange={handleChange}  data={data}/>
           <DashboardWrapper data={filteredCoins} />
           {!search && (
             <PaginationComponent

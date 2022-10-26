@@ -48,6 +48,7 @@ function CoinPage() {
       },
     },
     responsive: true,
+    aspectRatio: 3,
     interaction: {
       mode: "index",
       intersect: false,
