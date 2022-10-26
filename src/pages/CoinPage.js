@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import LineChart from "../components/DashboardComponents/LineChart";
+import BarChart from "../components/DashboardComponents/BarChart";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
 import CoinPageList from "../components/CoinPageComponents/CoinPageList";
@@ -32,7 +32,7 @@ function CoinPage() {
       {
         data: [],
         borderWidth: 2,
-        fill: false,
+        fill: true,
         tension: 0.25,
         backgroundColor: "transparent",
         borderColor: "white",
@@ -86,6 +86,7 @@ function CoinPage() {
   const getData = async () => {
     const response_data = await getCoinData(searchParams, true);
     setData(response_data);
+    console.log(response_data)
     const prices_data = await getPrices(response_data.id, days, type);
     setPrices(prices_data)
     var dates = getDaysArray(priorDate, today);
@@ -96,9 +97,9 @@ function CoinPage() {
         {
           data: prices_data?.map((data) => data[1]),
           borderWidth: 2,
-          fill: false,
+          fill: true,
           tension: 0.25,
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(249,65,65, 0.2)",
           borderColor: "#f94141",
           pointRadius: 0,
         },
@@ -110,9 +111,9 @@ function CoinPage() {
           {
             data: prices_data?.map((data) => data[1]),
             borderWidth: 2,
-            fill: false,
+            fill: true,
             tension: 0.25,
-            backgroundColor: "transparent",
+            backgroundColor: "rgba(47,222,70, 0.2)",
             borderColor: "#61c96f",
             pointRadius: 0,
           },
@@ -202,11 +203,13 @@ function CoinPage() {
             </div>
             </div>
             
-            <LineChart chartData={chartData} options={options} />
+            <BarChart chartData={chartData} options={options} />
             
           </div>
+          {console.log("new testttt",data.links.homepage[0])}
           
-          <CoinPageDesc name={data.name} desc={data.description.en} />
+          <CoinPageDesc name={data.name} desc={data.description.en} officialPage={data.links.homepage[0]
+} />
         </>
       )}
     </>
