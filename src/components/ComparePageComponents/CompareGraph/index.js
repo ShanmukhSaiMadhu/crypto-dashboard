@@ -12,10 +12,92 @@ function CompareGraph({ crypto1, crypto2, days, type, setType }) {
   const [prices1, setPrices1] = useState([]);
   const [prices2, setPrices2] = useState([]);
 
+  const [isMobile, setIsMobile] = React.useState(false);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (window.innerWidth < 620) {
+        setIsMobile(true);
+      }
+    }
+  }, []);
+
+
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - days));
 
-  const options = {
+  const options = isMobile ? {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    responsive: true,
+    aspectRatio: 1,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      title: {
+        display: true,
+        text: `Comparison betweeen ${crypto1} and ${crypto2}`,
+      },
+    },
+    scales: {
+      y: {
+        type: "linear",
+        display: true,
+        position: "left",
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
+      },
+      y1: {
+        type: "linear",
+        display: true,
+        position: "right",
+        grid: {
+          drawOnChartArea: false,
+        },
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
+      },
+    },
+  } 
+  :
+  {
     plugins: {
       legend: {
         display: false,

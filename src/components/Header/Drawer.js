@@ -5,6 +5,7 @@ import { IconButton, Switch } from "@mui/material";
 import "./styles.css";
 export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
+  
   const setDark = () => {
     localStorage.setItem("theme", "dark");
     document.documentElement.setAttribute("data-theme", "dark");
@@ -55,9 +56,6 @@ export default function TemporaryDrawer() {
           <a href="/compare">
             <p className="links">Compare</p>
           </a>
-          {/* <a href="/about-us">
-            <p className="links">About Us</p>
-          </a> */}
           <a href="/dashboard">
             <p className="links">Dashboard</p>
           </a>

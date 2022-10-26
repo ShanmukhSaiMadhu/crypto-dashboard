@@ -25,6 +25,14 @@ function CoinPage() {
   const [type, setType] = useState("prices");
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - days));
+  const [isMobile, setIsMobile] = React.useState(false);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (window.innerWidth < 620) {
+        setIsMobile(true);
+      }
+    }
+  }, []);
 
   const [chartData, setChartData] = useState({
     labels: [],
@@ -41,7 +49,43 @@ function CoinPage() {
     ],
   });
 
-  const options = {
+  const options = isMobile ? {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    responsive: true,
+    aspectRatio: 2,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    scales: {
+      y: {
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
+      },
+    },
+  } 
+  : 
+  {
     plugins: {
       legend: {
         display: false,
@@ -75,7 +119,7 @@ function CoinPage() {
               },
       },
     },
-  };
+  } 
   
   useEffect(() => {
     if (searchParams) {
@@ -163,15 +207,6 @@ function CoinPage() {
       ],
     });
   };
-
-  const [isMobile, setIsMobile] = React.useState(false);
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      if (window.innerWidth < 620) {
-        setIsMobile(true);
-      }
-    }
-  }, []);
 
   return (
     <>
