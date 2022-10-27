@@ -3,12 +3,16 @@ import "./styles.css";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import Link from '@mui/material/Link';
+
 function Search({ handleChange, data }) {
 
+  const [cryptoData, setCryptoData] = React.useState([])
   
   const top100Cryptos = data.map((item) => {
     return {
       label: item.name,
+      link: `/coin?${item.id}`,
       id: item.id
     }
   })
@@ -18,13 +22,15 @@ function Search({ handleChange, data }) {
       <div className="search-input">
         <SearchRoundedIcon sx={{ color: "var(--grey)" }} />
             <Autocomplete
-            
             disablePortal
             id="combo-box-demo"
             options={top100Cryptos}
-            sx={{ width: "100%" }}
-            renderInput={(params) => <TextField {...params} label="Search Cryptos"  onChange={handleChange} InputLabelProps={{
+            getOptionLabel={(option) => option.label}
+            onChange={(e, value) => window.location.href = value.link}
+            sx={{ width: "100%", ".MuiOutlinedInput-notchedOutline": { border: "none" }, }}
+            renderInput={(params) => <TextField {...params} label="Search Cryptos" onChange={handleChange} InputLabelProps={{
               sx: {
+                ".MuiOutlinedInput-notchedOutline": { border: "none" },
                 color: "var(--white)"
               }
             }} />}
@@ -34,4 +40,4 @@ function Search({ handleChange, data }) {
   );
 }
 
-export default Search;
+export default Search

@@ -6,7 +6,7 @@ import { Switch } from "@mui/material";
 import { styled } from '@mui/material/styles';
 
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -100,7 +100,8 @@ function Header() {
       <div className="links-flex">
         <MaterialUISwitch 
           sx={{ m: 1 }}
-          defaultChecked
+          checked = {!defaultDark}
+          // defaultChecked
           value={!darkTheme}
           onClick={() => toggleTheme()}
         />
@@ -120,7 +121,7 @@ function Header() {
         </a>
       </div>
       <div className="menu-div">
-        <Drawer />
+        <Drawer MaterialUISwitch={MaterialUISwitch} />
       </div>
     </div>
   );

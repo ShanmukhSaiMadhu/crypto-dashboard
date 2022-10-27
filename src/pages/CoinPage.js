@@ -157,7 +157,7 @@ function CoinPage() {
             borderWidth: 2,
             fill: true,
             tension: 0.25,
-            backgroundColor: "rgba(47,222,70, 0.2)",
+            backgroundColor: "rgb(97,201,111, 0.2)",
             borderColor: "#61c96f",
             pointRadius: 0,
           },
@@ -193,6 +193,7 @@ function CoinPage() {
       datasets: [
         {
           data: prices_data?.map((data) => data[1]),
+          backgroundColor: "rgba(249,65,65, 0.2)",
           borderColor: "#f94141",
         },
       ],
@@ -202,6 +203,7 @@ function CoinPage() {
       datasets: [
         {
           data: prices_data?.map((data) => data[1]),
+          backgroundColor: "rgb(97,201,111, 0.2)",
           borderColor: "#61c96f",
         },
       ],

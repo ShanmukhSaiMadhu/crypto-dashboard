@@ -3,6 +3,8 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton, Switch } from "@mui/material";
 import "./styles.css";
+import { MaterialUISwitch } from "./index";
+
 export default function TemporaryDrawer() {
   const [open, setOpen] = useState(false);
   
@@ -60,8 +62,9 @@ export default function TemporaryDrawer() {
             <p className="links">Dashboard</p>
           </a>
           <p className="links">
-            <Switch
-              defaultChecked
+            <MaterialUISwitch
+            checked = {!defaultDark}
+              // defaultChecked
               value={!darkTheme}
               onClick={() => toggleTheme()}
             />
