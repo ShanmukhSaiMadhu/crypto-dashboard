@@ -38,7 +38,6 @@ function Dashboard() {
 
   const handlePageChange = (e, value) => {
     setPage(value);
-    console.log("valueee", value);
     setFilteredCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
     console.log("filteredCoins", filteredCoins);
     topFunction();
@@ -47,7 +46,6 @@ function Dashboard() {
   useEffect(() => {
     axios.get(API_URL, { crossDomain: true }).then((response) => {
       if (response.data) {
-        console.log(response.data);
         setData(response.data);
         setFilteredCoins(
           response.data.slice((page - 1) * 10, (page - 1) * 10 + 10)

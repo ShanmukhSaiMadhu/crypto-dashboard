@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import BarChart from "../components/DashboardComponents/BarChart";
+import LineChart from '../components/DashboardComponents/LineChart'
 import Header from "../components/Header";
 import Loader from "../components/Loader";
 import CoinPageList from "../components/CoinPageComponents/CoinPageList";
@@ -130,7 +130,6 @@ function CoinPage() {
   const getData = async () => {
     const response_data = await getCoinData(searchParams, true);
     setData(response_data);
-    console.log(response_data)
     const prices_data = await getPrices(response_data.id, days, type);
     setPrices(prices_data)
     var dates = getDaysArray(priorDate, today);
@@ -240,7 +239,7 @@ function CoinPage() {
             </div>
             </div>
             
-            <BarChart chartData={chartData} options={options} />
+            <LineChart chartData={chartData} options={options} />
             
           </div>
           {console.log("new testttt",data.links.homepage[0])}
